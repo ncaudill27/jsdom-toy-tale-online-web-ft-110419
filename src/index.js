@@ -27,6 +27,31 @@ function getToys() {
     })
 }
 
+function postToy(name, url) {
+  fetch('http://localhost:3000/toys', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      'name': name,
+      'image': url,
+      'likes': 0
+      
+    })
+  })
+  .then(function(response) {
+    response.json()
+  })
+  .then(function(object) {
+    console.log(object)
+  })
+  .catch(function(error) {
+    document.body.innerHTML = error.message
+  })
+}
+
 function renderToy(toy) {
   const toyCollection = document.getElementById('toy-collection')
   const toyDiv = document.createElement('div')
