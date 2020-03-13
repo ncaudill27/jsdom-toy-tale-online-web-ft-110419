@@ -1,8 +1,13 @@
 let addToy = false;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const addBtn = document.querySelector("#new-toy-btn");
+  toyFormShowEvent()
+  getToys()
+});
+
+function toyFormShowEvent() {
   const toyForm = document.querySelector(".container");
+  const addBtn = document.querySelector("#new-toy-btn");
   addBtn.addEventListener("click", () => {
     // hide & seek with the form
     addToy = !addToy;
@@ -12,8 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toyForm.style.display = "none";
     }
   });
-  getToys()
-});
+}
 
 function getToys() {
   fetch('http://localhost:3000/toys')
